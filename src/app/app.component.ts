@@ -8,14 +8,18 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   title = 'Crazy Dices';
-  singleThrowResult = 55;
+  numberOfThrows: number[] = [1, 2, 3];
+  diceTypes: number[] = [6, 20];
+
+  singleThrowResult = 0;
+  multipleThrowResult = 0;
 
   singleThrow(): void {
     this.singleThrowResult++;
   }
 
   multipleThrow(): void {
-
+    this.multipleThrowResult++;
   }
 
 }
