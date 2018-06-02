@@ -4,30 +4,30 @@
 
 <h2>Single Throw</h2>
 
-<select name="single_number" size="1">
-  <option *ngFor='let throws of numberOfThrows'>{{ throws }}</option>
+<select name="number_single" size="1" #selected_number_single>
+  <option *ngFor='let number of numberOfThrows'>{{ number }}</option>
 </select>
 x
 W
-<select name="single_dice_typ" size="1">
-  <option *ngFor='let diceTyp of diceTypes'>{{ diceTyp }}</option>
+<select name="type_single" size="1" #selected_type_single>
+  <option *ngFor='let type of diceTypes'>{{ type }}</option>
 </select>
 +
-<input name="single_offset" size="1" value="0">
+<input name="offset_single" size="1" value="0">
 =
 {{ singleThrowResult }}
-<button (click)='singleThrow($event)'>Go</button>
+<button (click)="onButtonClickSingle(selected_number_single.value, selected_type_single.value)">Go</button>
 
 
 <h2>Multiple Throw</h2>
 
-<select name="multiple_number" size="1">
-  <option *ngFor='let throws of numberOfThrows'>{{ throws }}</option>
+<select name="number_multiple" size="1">
+  <option *ngFor='let number of numberOfThrows'>{{ number }}</option>
 </select>
 x
 W
-<select name="multiple_dice_typ" size="1">
-  <option *ngFor='let diceTyp of diceTypes'>{{ diceTyp }}</option>
+<select name="type_multiple" size="1">
+  <option *ngFor='let type of diceTypes'>{{ type }}</option>
 </select>
 =
 {{ multipleThrowResult }}

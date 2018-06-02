@@ -14,12 +14,12 @@ export class AppComponent {
   singleThrowResult = 0;
   multipleThrowResult = 0;
 
-  singleThrow(): void {
-    this.singleThrowResult++;
-  }
-
   multipleThrow(): void {
     this.multipleThrowResult++;
+  }
+
+  onButtonClickSingle(numberOfThrows: string, type: string) {
+    this.singleThrowResult = parseInt(numberOfThrows) + parseInt(type);
   }
 
 }
