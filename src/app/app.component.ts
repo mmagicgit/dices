@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+  title = 'Crazy Dices';
+  singleThrowResult = 55;
+
+  singleThrow(): void {
+    this.singleThrowResult++;
+  }
+
+  multipleThrow(): void {
+
+  }
+
 }
