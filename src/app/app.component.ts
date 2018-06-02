@@ -15,11 +15,19 @@ export class AppComponent {
   multipleThrowResult: number[] = [0];
 
   onButtonClickSingle(numberOfThrows: string, type: string, offset: string) {
-    this.singleThrowResult = parseInt(numberOfThrows) + parseInt(type) + parseInt(offset);
+    this.singleThrowResult = parseInt(numberOfThrows) * AppComponent.randomNumber(parseInt(type)) + parseInt(offset);
   }
 
   onButtonClickMultiple(numberOfThrows: string, type: string) {
-    this.multipleThrowResult = [parseInt(numberOfThrows), parseInt(type)];
+    let result: number[] = new Array(parseInt(numberOfThrows));
+    for(let i = 0; i<parseInt(numberOfThrows); i++) {
+      result[i] = AppComponent.randomNumber(parseInt(type));
+    }
+    this.multipleThrowResult = result;
+  }
+
+  static randomNumber(max: number): number {
+    return Math.floor(Math.random() * max) + 1
   }
 
 }
