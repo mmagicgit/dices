@@ -4,32 +4,31 @@
 
 <h2>Single Throw</h2>
 
-<select name="number_single" size="1" #selected_number_single>
+<select title="number_single" size="1" #selected_number_single>
   <option *ngFor='let number of numberOfThrows'>{{ number }}</option>
 </select>
 x
 W
-<select name="type_single" size="1" #selected_type_single>
+<select title="type_single" size="1" #selected_type_single>
   <option *ngFor='let type of diceTypes'>{{ type }}</option>
 </select>
 +
-<input name="offset_single" size="1" value="0">
+<input title="offset_single" size="1" value="0" #offset_single>
 =
 {{ singleThrowResult }}
-<button (click)="onButtonClickSingle(selected_number_single.value, selected_type_single.value)">Go</button>
+<button (click)="onButtonClickSingle(selected_number_single.value, selected_type_single.value, offset_single.value)">Go</button>
 
 
 <h2>Multiple Throw</h2>
 
-<select name="number_multiple" size="1">
+<select title="number_multiple" size="1" #selected_number_multiple>
   <option *ngFor='let number of numberOfThrows'>{{ number }}</option>
 </select>
 x
 W
-<select name="type_multiple" size="1">
+<select title="type_multiple" size="1" #selected_type_multiple>
   <option *ngFor='let type of diceTypes'>{{ type }}</option>
 </select>
 =
 {{ multipleThrowResult }}
-<button (click)='multipleThrow()'>Go</button>
-
+<button (click)="onButtonClickMultiple(selected_number_multiple.value, selected_type_multiple.value)">Go</button>

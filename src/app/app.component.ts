@@ -11,15 +11,15 @@ export class AppComponent {
   numberOfThrows: number[] = [1, 2, 3];
   diceTypes: number[] = [6, 20];
 
-  singleThrowResult = 0;
-  multipleThrowResult = 0;
+  singleThrowResult: number = 0;
+  multipleThrowResult: number[] = [0];
 
-  multipleThrow(): void {
-    this.multipleThrowResult++;
+  onButtonClickSingle(numberOfThrows: string, type: string, offset: string) {
+    this.singleThrowResult = parseInt(numberOfThrows) + parseInt(type) + parseInt(offset);
   }
 
-  onButtonClickSingle(numberOfThrows: string, type: string) {
-    this.singleThrowResult = parseInt(numberOfThrows) + parseInt(type);
+  onButtonClickMultiple(numberOfThrows: string, type: string) {
+    this.multipleThrowResult = [parseInt(numberOfThrows), parseInt(type)];
   }
 
 }
