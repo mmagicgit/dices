@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
+import { RandomNumberService } from "./randomnumber.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [RandomNumberService]
 })
 export class AppComponent {
 
-  title = 'Crazy Dices';
+  constructor(private _randomNumberService: RandomNumberService) {
+  }
+
+  title: string = 'Crazy Dices';
   numberOfThrows: number[] = [1, 2, 3];
   diceTypes: number[] = [6, 20];
 
@@ -15,19 +20,15 @@ export class AppComponent {
   multipleThrowResult: number[] = [0];
 
   onButtonClickSingle(numberOfThrows: string, type: string, offset: string) {
-    this.singleThrowResult = parseInt(numberOfThrows) * AppComponent.randomNumber(parseInt(type)) + parseInt(offset);
+    this.singleThrowResult = parseInt(numberOfThrows) * this._randomNumberService.randomNumber(parseInt(type)) + parseInt(offset);
   }
 
   onButtonClickMultiple(numberOfThrows: string, type: string) {
     let result: number[] = new Array(parseInt(numberOfThrows));
     for(let i = 0; i<parseInt(numberOfThrows); i++) {
-      result[i] = AppComponent.randomNumber(parseInt(type));
+      result[i] = this._randomNumberService.randomNumber(parseInt(type));
     }
     this.multipleThrowResult = result;
-  }
-
-  static randomNumber(max: number): number {
-    return Math.floor(Math.random() * max) + 1
   }
 
 }
